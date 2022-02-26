@@ -10,7 +10,7 @@ private:
     string toName;
     string fromName;
     int amount;
-    shared_ptr<Transaction> next;
+    shared_ptr<Transaction> prev;
 public:
     Transaction();
     Transaction(string, string, int);

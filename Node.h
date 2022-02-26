@@ -9,15 +9,13 @@
 using namespace std;
 
 class Node {
-private:
-    int data;
-    shared_ptr<Node> next;
+protected:
+    shared_ptr<Node> prev;
+    string nodeType;
 public:
     Node();
-    Node(int);
-    Node(int, shared_ptr<Node>);
+    Node(shared_ptr<Node>);
 
     shared_ptr<Node> getNext() const;
-    int getValue() const;
 };
 

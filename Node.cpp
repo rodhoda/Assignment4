@@ -5,14 +5,7 @@
 #include "Node.h"
 
 Node::Node() {};
-Node::Node(int newData): data(newData) {}
-Node::Node(int newData, shared_ptr<Node> newPtr): data(newData),
-                                                  next(newPtr) {}
-
-
-int Node::getValue() const {
-    return data;
-}
+Node::Node(shared_ptr<Node> newPtr): next(newPtr) {}
 
 shared_ptr<Node> Node::getNext() const {
     return next;
