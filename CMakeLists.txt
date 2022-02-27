@@ -3,4 +3,4 @@ project(Assignment4)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Assignment4 LedgerDriver.cpp)
+add_executable(Assignment4 LedgerDriver.cpp Transaction.cpp Node.cpp State.cpp Ledger.cpp)

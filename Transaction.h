@@ -17,5 +17,11 @@ public:
 
     string getToName() const;
     string getFromName() const;
-    shared_ptr<Transaction> getNext();
+    int getAmount() const;
+
+    void setToName(string);
+    void setFromName(string);
+    void setAmount(int);
+
+    shared_ptr<Transaction> getPrev();
 };

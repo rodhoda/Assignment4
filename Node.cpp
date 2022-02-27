@@ -5,10 +5,11 @@
 #include "Node.h"
 
 Node::Node() {};
-Node::Node(shared_ptr<Node> newPtr): next(newPtr) {}
+Node::Node(shared_ptr<Node> newPtr): prev(newPtr) {}
 
-shared_ptr<Node> Node::getNext() const {
-    return next;
+shared_ptr<Node> Node::getPrev() const {
+    return prev;
 }
+
 
 

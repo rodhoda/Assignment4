@@ -1,15 +1,16 @@
 #include <iostream>
-//#include "Ledger.h"
-//#include "Transaction.h"
+#include "Ledger.h"
+#include "Node.h"
+#include "Transaction.h"
 
 using namespace std;
 
 int main () {
-
-
-
-
-//	Ledger myLedger;
+    Transaction t1 = Transaction("Rod", "Bob", 100);
+    Transaction t2 = Transaction("James", "Alice", 50);
+    Ledger myLedger;
+    myLedger.Add(t1);
+    myLedger.Add(t2);
 //
 //	Transaction t1 = Transaction("alice", "EXTERNAL", 100);
 //	Transaction t2 = Transaction("bob", "EXTERNAL", 10);

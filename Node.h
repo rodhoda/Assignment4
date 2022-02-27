@@ -16,6 +16,6 @@ public:
     Node();
     Node(shared_ptr<Node>);
 
-    shared_ptr<Node> getNext() const;
+    shared_ptr<Node> getPrev() const;
 };
 
