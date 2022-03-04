@@ -62,19 +62,6 @@ Ledger& Ledger::operator+=(Transaction newTxn) {
 //        ledgerVector.clear();
     }
 }
-//    toName = newTxn.getToName();
-//    fromName = newTxn.getFromName();
-//    amount = newTxn.getAmount();
-//    Transaction newNode;
-//    newNode.setToName(toName);
-//    newNode.setFromName(fromName);
-//    newNode.setAmount(amount);
-
-//    if (newLedger->endPtr == nullptr)
-//        newLedger->endPtr = ;
-//
-//    return newNode;
-
 
 ostream& operator<<(ostream& os, const Ledger& ledger) {
     if (ledger.endPtr != nullptr) {
@@ -86,15 +73,10 @@ ostream& operator<<(ostream& os, const Ledger& ledger) {
                 cout << "From: " << tran->getFromName() << endl;
                 cout << "To: " << tran->getToName() << endl;
                 cout << "Amount: $" << tran->getAmount() << endl;;
-
             }
             curNode = curNode->getPrev();
-            //        if (type == "STATE") {
-            //            curNode = curNode->getPrev();
-            //        }
         }
     }
-   return os;
 }
 
 Ledger &Ledger::operator-=(Transaction newTxn) {
@@ -126,7 +108,6 @@ Ledger &Ledger::operator-=(Transaction newTxn) {
             if (newTransaction->getFromName() == curPrevTran->getFromName() && newTransaction->getToName() == curPrevTran->getToName() &&
                     newTransaction->getAmount() == curPrevTran->getAmount()) {
                 curNode->setPrev(curPrevNode->getPrev());
-                cout << curPrevNode.use_count() << endl;
                 break;
                 //            cout << curPrevNode.use_count() << endl;
             }
@@ -134,35 +115,72 @@ Ledger &Ledger::operator-=(Transaction newTxn) {
                 curNode = curNode->getPrev();
                 curPrevNode = curPrevNode->getPrev();
             }
-            cout << "Transaction Node" << endl;
         }
         else {
-            cout << "State Node" << endl;
             break;
         }
     }
 }
 
 void Ledger::Clear() {
-    shared_ptr<Node> nullNode;
+    endPtr = nullptr;
     ledgerVector.clear();
-    endPtr = nullNode;
 }
 
 void Ledger::Settle() {
+    shared_ptr<Node> curNode = endPtr;
     if (endPtr != nullptr) {
-        shared_ptr<Node> curNode = endPtr;
         while (curNode != nullptr) {
             string type = curNode->getType();
             if (type == "STATE") {
                 auto tran = dynamic_pointer_cast<State>(curNode);
-
-
+                for (const auto& i: tran->getLedger()) {
+                    cout << "Account User: " << i.first << endl;
+                    cout << "Balance: " << i.second << endl;
+                }
+                break;
             }
             curNode = curNode->getPrev();
-            //        if (type == "STATE") {
-            //            curNode = curNode->getPrev();
-            //        }
+        }
+    }
+}
+
+void Ledger::InTheBlack() {
+    shared_ptr<Node> curNode = endPtr;
+    if (endPtr != nullptr) {
+        while (curNode != nullptr) {
+            string type = curNode->getType();
+            if (type == "STATE") {
+                auto tran = dynamic_pointer_cast<State>(curNode);
+                for (const auto& i: tran->getLedger()) {
+                    if (i.second >= 0) {
+                        cout << "Account User: " << i.first << endl;
+                        cout << "Balance: " << i.second << endl;
+                    }
+                }
+                break;
+            }
+            curNode = curNode->getPrev();
+        }
+    }
+}
+
+void Ledger::InTheRed() {
+    shared_ptr<Node> curNode = endPtr;
+    if (endPtr != nullptr) {
+        while (curNode != nullptr) {
+            string type = curNode->getType();
+            if (type == "STATE") {
+                auto tran = dynamic_pointer_cast<State>(curNode);
+                for (const auto& i: tran->getLedger()) {
+                    if (i.second < 0) {
+                        cout << "Account User: " << i.first << endl;
+                        cout << "Balance: " << i.second << endl;
+                    }
+                }
+                break;
+            }
+            curNode = curNode->getPrev();
         }
     }
 }

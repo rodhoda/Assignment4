@@ -17,6 +17,7 @@ private:
     map<string, int> ledgerVector;
     shared_ptr<Node> endPtr;
     int count = 0;
+    shared_ptr<Node> otherPtr;
 public:
     Ledger();
 
@@ -27,6 +28,6 @@ public:
     friend ostream& operator<<(ostream& os, const Ledger&);
     void Clear();
     void Settle();
-    void inTheBlack();
-    void inTheRed();
+    void InTheBlack();
+    void InTheRed();
 };

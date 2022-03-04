@@ -15,12 +15,11 @@ int main () {
     Ledger myLedger;
     myLedger += t1;
     myLedger += t2;
+    myLedger += Transaction("Albert", "Bob", 100);
+    myLedger += Transaction("Albert", "Bob", 100);
 
 
 //    cout << myLedger;
-
-    cout << endl;
-    cout << endl;
 
 //
 //	Transaction t1 = Transaction("alice", "EXTERNAL", 100);
@@ -43,28 +42,33 @@ int main () {
 //
 //	myLedger -= t4;
 //
-	for (int i = 0; i < 8; i++) {
+	for (int i = 0; i < 18; i++) {
         myLedger += Transaction("fred", "carol", 1);
 	}
     myLedger += t4;
     myLedger += t5;
-    myLedger -= t4;
+//    myLedger -= t4;
+
     cout << endl;
-    cout << myLedger << endl;
+    cout << myLedger;
+    cout << endl;
 //
 //	cout << myLedger << endl;
 //	cout << endl << endl;
-//	myLedger.Settle();
-//	cout << endl << endl;
-//	myLedger.InTheBlack();
-//	cout << endl << endl;
-//	myLedger.InTheRed();
-//
-//	myLedger.Clear();
-//
-//    cout << "Before printing empty ledger" << endl;
-//	cout << myLedger << endl;
-//    cout << "After printing empty ledger" << endl;
-//    return 0;
+	myLedger.Settle();
+	cout << endl << endl;
+	myLedger.InTheBlack();
+	cout << endl << endl;
+	myLedger.InTheRed();
+
+
+    cout << "Before clear()" << endl;
+
+	myLedger.Clear();
+
+    cout << "Before printing empty ledger" << endl;
+	cout << myLedger << endl;
+    cout << "After printing empty ledger" << endl;
+    return 0;
 
 }
