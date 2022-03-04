@@ -6,11 +6,22 @@
 using namespace std;
 
 int main () {
-    Transaction t1 = Transaction("Rod", "Bob", 100);
+    Transaction t1 = Transaction("Albert", "Bob", 100);
     Transaction t2 = Transaction("James", "Alice", 50);
+    Transaction t3 = Transaction("Dean", "Amy", 100);
+    Transaction t4 = Transaction("Jack", "Herb", 100);
+    Transaction t5 = Transaction("Bartholomew", "EXTERNAL", 900);
+
     Ledger myLedger;
-    myLedger.Add(t1);
-    myLedger.Add(t2);
+    myLedger += t1;
+    myLedger += t2;
+
+
+//    cout << myLedger;
+
+    cout << endl;
+    cout << endl;
+
 //
 //	Transaction t1 = Transaction("alice", "EXTERNAL", 100);
 //	Transaction t2 = Transaction("bob", "EXTERNAL", 10);
@@ -32,9 +43,14 @@ int main () {
 //
 //	myLedger -= t4;
 //
-//	for (int i = 0; i < 50; i++) {
-//		myLedger +=  Transaction("fred", "carol", 1);
-//	}
+	for (int i = 0; i < 8; i++) {
+        myLedger += Transaction("fred", "carol", 1);
+	}
+    myLedger += t4;
+    myLedger += t5;
+    myLedger -= t4;
+    cout << endl;
+    cout << myLedger << endl;
 //
 //	cout << myLedger << endl;
 //	cout << endl << endl;
@@ -46,6 +62,9 @@ int main () {
 //
 //	myLedger.Clear();
 //
+//    cout << "Before printing empty ledger" << endl;
 //	cout << myLedger << endl;
-	return 0;
+//    cout << "After printing empty ledger" << endl;
+//    return 0;
+
 }

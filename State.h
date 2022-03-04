@@ -3,6 +3,7 @@
 //
 
 #include "Node.h"
+#include <map>
 #pragma once
 
 //Base #2: State Node Class
@@ -10,12 +11,11 @@ class State: public Node {
 private:
     // This will hold a pair of string and int that will be each
     // account member and their balance
-    vector<pair<string, int>> ledgerSummary;
-    shared_ptr<State> next;
+    map<string, int> ledgerSummary;
 public:
     State();
-    State(vector<pair<string, int>>);
+    State(map<string, int>);
 
-    vector<pair<string, int>> getLedger();
-    shared_ptr<State> getNext();
+    map<string, int> getLedger();
+    void setLedger(map<string, int>);
 };

@@ -8,14 +8,21 @@
 #include <vector>
 using namespace std;
 
+
 class Node {
 protected:
     shared_ptr<Node> prev;
     string nodeType;
+
 public:
     Node();
     Node(shared_ptr<Node>);
+    virtual ~Node();
 
     shared_ptr<Node> getPrev() const;
+    virtual void setPrev(shared_ptr<Node>);
+    string getType();
+
+
 };
 

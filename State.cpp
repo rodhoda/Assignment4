@@ -3,3 +3,18 @@
 //
 
 #include "State.h"
+
+State::State() {
+    nodeType = "STATE";
+}
+
+State::State(map<string, int>  newMap): ledgerSummary(newMap) {
+    nodeType = "STATE";
+}
+
+map<string, int> State::getLedger() {}
+
+void State::setLedger(map<string, int> newLedger) {
+    ledgerSummary = newLedger;
+}
+

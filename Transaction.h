@@ -1,19 +1,21 @@
 //
 // Created by rodho on 2/22/2022.
 //
-#include "Node.h"
+
 #pragma once
+#include "Node.h"
+using namespace std;
 
 // Base #1: Transaction Node Class
 class Transaction: public Node {
 private:
     string toName;
     string fromName;
-    int amount;
-    shared_ptr<Transaction> prev;
+    int amount{};
 public:
     Transaction();
     Transaction(string, string, int);
+
 
     string getToName() const;
     string getFromName() const;
@@ -23,5 +25,10 @@ public:
     void setFromName(string);
     void setAmount(int);
 
-    shared_ptr<Transaction> getPrev();
+    shared_ptr<Node> getPrev();
+    void setPrev(shared_ptr<Transaction>);
+    bool operator==(shared_ptr<Transaction>);
+
+
+    void print();
 };
